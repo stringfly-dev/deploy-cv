@@ -1,0 +1,257 @@
+/* ========== GLOBAL ========== */
+body {
+  margin: 0;
+  padding: 1% 1%;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  background: var(--bg, #f3f3f3);
+  overflow-x: hidden; /* กันล้นแนวนอน */
+}
+
+/* =========================================
+   HERO SECTION (Desktop + Responsive)
+========================================= */
+.project-hero {
+  background: #0c0d0f;
+  border-radius: 20px;
+  /* padding: 60px 72px; */
+  width: 100%;
+  max-width: 100%;
+  max-height: auto;
+
+  display: grid;
+  grid-template-columns: 46% 54%;
+  grid-template-areas:
+    "left right"
+    "meta meta";
+  gap: 10px;
+
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.back-btn {
+  position: absolute;
+  top: 24px;
+  left: 28px;
+
+  font-size: 1vw;
+  text-decoration: none;
+  color: #c8b4ff;
+
+  z-index: 20; /* ให้ลอยเหนือภาพ */
+}
+
+.back-btn:hover {
+  opacity: 0.8;
+}
+
+/* จัดโครงสร้าง grid ใหม่: ซ้าย 35% ขวา 65% */
+.project-hero {
+  background: #0c0d0f;
+  border-radius: 20px;
+
+  display: grid;
+  grid-template-columns: 13% 35% 55%;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "extra left right"
+    "extra meta meta";
+
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* ฝั่งซ้าย (ข้อความ) */
+.hero-left {
+  grid-area: left;
+  width: 100%;
+  /* padding-right: 32px; */
+  padding: 10% 1%;
+}
+
+/* ฝั่งขวา (รูป) */
+.hero-right {
+  grid-area: right;
+  position: relative;
+  width: 130%;
+  padding: 0% 1%;
+}
+
+/* รูปด้านขวาให้กิน 65% */
+.hero-image {
+  width: 100%;     /* ครอบพื้นที่ของ column ขวา (ซึ่งตอนนี้คือ 65%) */
+  height: auto;
+  object-fit: contain;
+  transform: translateX(-26%);
+}
+
+/* จัดให้อยู่บรรทัดเดียวกัน */
+.hero-title-row {
+  display: flex;
+  align-items: center;   /* จัด vertical alignment ให้อยู่กลาง */
+}
+
+/* ปรับขนาด icon */
+.hero-logo {
+  width: 15%;
+  height: 50%;
+}
+
+/* ==============================================
+   TITLE ROW (เหมือนในภาพเป๊ะ)
+================================================= */
+.hero-title-row {
+  margin-bottom: 32px;  /* เพิ่มระยะห่างใต้หัวข้อ */
+}
+
+.hero-title {
+  font-size: 1.7vw;     /* แบบในภาพ */
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.1;
+}
+
+/* ==============================================
+   SECTION LABEL (PROJECT OVERVIEW / THE CHALLENGE)
+================================================= */
+.hero-label {
+  font-size: 0.9vw;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #FFFFFF66;      /* เทาอ่อนแบบในภาพ */
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* ==============================================
+   BODY TEXT
+================================================= */
+.hero-text {
+  font-size: 0.8vw;     /* ขนาดในตัวอย่าง */
+  line-height: 100%;
+  color: #FFFFFFCC;      /* ขาวหม่นแบบในภาพ */
+  max-width: 69%;
+  font-weight: 400;
+  letter-spacing: 0%;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+/* ==============================================
+   SPACING BETWEEN BLOCKS
+================================================= */
+.hero-block {
+  margin-bottom: 12%;
+}
+
+.hero-meta {
+  margin-top: -6%;
+  grid-area: meta;
+  display: grid;
+  grid-template-columns: 15% 35% 15% 25%;
+  align-items: start;
+  margin-bottom: 3rem;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;   /* <<< ชี้ชัดว่าทุก content ต้องชิดซ้ายและบน */
+  justify-content: flex-start; /* <<< บังคับให้ชิดด้านบน */
+}
+
+.meta-label {
+  font-size: 0.9vw;
+  font-weight: 600;
+  color: #ffffff66;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.meta-value {
+  margin-top: -5%;
+  font-size: 0.9vw;
+  color: #ffffffcc;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 1%; 
+  margin-top: -3%;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(90deg, #4E3CEC4D, #4E3CEC4D);
+  padding: 0.8% 3%;
+  border-radius: 999px;   /* ทำให้ pill shape */
+  font-size: 0.8vw;
+  color: #C9C3FF;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  white-space: nowrap;    /* กันขึ้นบรรทัดใหม่ในปุ่ม */
+  cursor: pointer;
+
+   transition: 
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+/* Hover Effect */
+.tag:hover {
+  transform: translateY(-3px) scale(1.06); /* ลอย + ขยายเล็กน้อย */
+
+  background: linear-gradient(90deg, #6A5BFF, #8E79FF);
+
+  box-shadow:
+    0 0 18px rgba(132, 88, 255, 0.9),
+    0 0 30px rgba(132, 88, 255, 0.5);
+}
+
+.tag-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.9;
+}
+
+.tool-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: -4%;
+}
+
+.tool-row img {
+  width: 2.2vw;
+  padding: 0.2vw;
+  border-radius: 12px;
+  height: auto;
+  cursor: pointer;
+
+  /* animation อัตโนมัติ */
+  animation: autoWiggle 2.8s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.3s); /* ทำให้แต่ละภาพเริ่มไม่พร้อมกัน */
+}
+
+@keyframes autoWiggle {
+  0%   { transform: rotate(0deg) scale(1); }
+  15%  { transform: rotate(-6deg) scale(1.06); }
+  30%  { transform: rotate(6deg) scale(1.08); }
+  45%  { transform: rotate(-3deg) scale(1.06); }
+  60%  { transform: rotate(0deg) scale(1); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+
+
+
+
