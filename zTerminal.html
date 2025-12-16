@@ -350,12 +350,13 @@
 <script>
 
   document.getElementById("backBtn")?.addEventListener("click", () => {
-    document.body.classList.add("fade-out");
+  document.body.classList.add("fade-out");
 
-    setTimeout(() => {
-      history.back();
-    }, 300);
-  });
+  setTimeout(() => {
+    window.location.href = "/index.html";
+  }, 300);
+});
+
 
   const sections = document.querySelectorAll(
     ".content-section, .content-footer"
