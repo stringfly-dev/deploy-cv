@@ -111,18 +111,47 @@
 </div>
 <script>
   
-document.querySelectorAll("a.card").forEach(card => {
-  card.addEventListener("click", e => {
+ 
+// document.querySelectorAll("a.card").forEach(card => {
+//   card.addEventListener("click", e => {
 
-    // ❌ ถ้าไม่ใช่ navigation card → ปล่อยให้เป็น normal interaction
-    if (card.dataset.nav !== "true") return;
+//     // ❌ ถ้าไม่ใช่ navigation card → ปล่อยให้เป็น normal interaction
+//     if (card.dataset.nav !== "true") return;
+
+//     const url = card.getAttribute("href");
+
+//     // กันกรณี href ผิด
+//     if (!url || url === "#" || url.startsWith("javascript")) return;
+
+//     e.preventDefault();
+
+//     const portal = document.getElementById("portalEffect");
+//     const rect = card.getBoundingClientRect();
+
+//     portal.style.setProperty("--cx", rect.left + rect.width / 2 + "px");
+//     portal.style.setProperty("--cy", rect.top + rect.height / 2 + "px");
+//     portal.style.display = "block";
+
+//     let navigated = false;
+//     const go = () => {
+//       if (navigated) return;
+//       navigated = true;
+//       window.location.assign(url);
+//     };
+
+//     portal.addEventListener("animationend", go, { once: true });
+//     setTimeout(go, 1500);
+//   });
+// });
+
+document.querySelectorAll("a.card[data-nav='true']").forEach(card => {
+  card.addEventListener("click", e => {
+    e.preventDefault();
 
     const url = card.getAttribute("href");
-
-    // กันกรณี href ผิด
     if (!url || url === "#" || url.startsWith("javascript")) return;
 
-    e.preventDefault();
+    const cleanUrl = url.split("#")[0];
 
     const portal = document.getElementById("portalEffect");
     const rect = card.getBoundingClientRect();
@@ -135,14 +164,13 @@ document.querySelectorAll("a.card").forEach(card => {
     const go = () => {
       if (navigated) return;
       navigated = true;
-      window.location.assign(url);
+      window.location.replace(cleanUrl);
     };
 
     portal.addEventListener("animationend", go, { once: true });
-    setTimeout(go, 1500);
+    setTimeout(go, 1200);
   });
 });
-
 
 
 </script>
