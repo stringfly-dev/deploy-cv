@@ -243,3 +243,48 @@ html, body {
   60% { transform: rotate(0deg); }
   100% { transform: rotate(0deg); }
 }
+
+.portal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 9999;
+  pointer-events: none;
+
+  backdrop-filter: blur(0px) brightness(1.2);
+  background: radial-gradient(circle, rgba(255,255,255,0.12), rgba(0,0,0,0.9));
+
+  clip-path: circle(0% at var(--cx) var(--cy));
+
+  animation: glassPortal 1.2s ease forwards;
+}
+
+@keyframes glassPortal {
+  0% {
+    clip-path: circle(0% at var(--cx) var(--cy));
+    backdrop-filter: blur(0px);
+    opacity: 0.2;
+  }
+  50% {
+    backdrop-filter: blur(16px) brightness(1.8);
+    opacity: 1;
+  }
+  100% {
+    clip-path: circle(140% at var(--cx) var(--cy));
+    backdrop-filter: blur(24px) brightness(1.1);
+    opacity: 1;
+  }
+}
+
+body.is-transitioning {
+  overflow: hidden;
+}
+
+#cardTransitionLayer {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+

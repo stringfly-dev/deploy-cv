@@ -5,10 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Portfolio Grid</title>
   <link rel="stylesheet" href="css/style.css" />
+  <script src="js/main.js" defer></script>
 </head>
 <body>
 
+<div id="portalEffect" class="portal"></div>
+
 <div class="page">
+
 
   <!-- LEFT COLUMN -->
   <aside class="left-col">
@@ -40,7 +44,7 @@
   <main class="right-grid">
 
     <!-- COLUMN 1 -->
-    <a class="card card-col1-top card-tall" href="zTerminal.html">
+    <a class="card card-col1-top card-tall" href="zTerminal.html" data-nav="true">
       <video autoplay muted loop playsinline src="assets/zTerminal.mp4"></video>
       <div class="card-info">
         <h3 class="card-title">zTerminal</h3>
@@ -105,6 +109,42 @@
   </main>
 
 </div>
+<script>
+  
+document.querySelectorAll("a.card").forEach(card => {
+  card.addEventListener("click", e => {
 
+    // ❌ ถ้าไม่ใช่ navigation card → ปล่อยให้เป็น normal interaction
+    if (card.dataset.nav !== "true") return;
+
+    const url = card.getAttribute("href");
+
+    // กันกรณี href ผิด
+    if (!url || url === "#" || url.startsWith("javascript")) return;
+
+    e.preventDefault();
+
+    const portal = document.getElementById("portalEffect");
+    const rect = card.getBoundingClientRect();
+
+    portal.style.setProperty("--cx", rect.left + rect.width / 2 + "px");
+    portal.style.setProperty("--cy", rect.top + rect.height / 2 + "px");
+    portal.style.display = "block";
+
+    let navigated = false;
+    const go = () => {
+      if (navigated) return;
+      navigated = true;
+      window.location.assign(url);
+    };
+
+    portal.addEventListener("animationend", go, { once: true });
+    setTimeout(go, 1500);
+  });
+});
+
+
+
+</script>
 </body>
 </html>
