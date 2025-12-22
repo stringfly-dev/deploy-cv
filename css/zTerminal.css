@@ -35,7 +35,7 @@ body {
   display: inline-flex;       
   align-items: center;      
   gap: 6px;                  
-
+  
   padding: 8px 14px;              /* เตรียมพื้นที่ไว้ตั้งแต่ปกติ */
   border-radius: 0.5vw;
 
@@ -86,7 +86,11 @@ body {
   grid-area: left;
   width: 100%;
   /* padding-right: 32px; */
-  padding: 10% 1%;
+  padding-top: 10%;
+  padding-bottom: 0%;
+  padding-left: 1%;
+  padding-right: 1%;
+
 }
 
 /* ฝั่งขวา (รูป) */
@@ -109,6 +113,7 @@ body {
 .hero-title-row {
   display: flex;
   align-items: center;   /* จัด vertical alignment ให้อยู่กลาง */
+  padding-bottom: 8%;
 }
 
 /* ปรับขนาด icon */
@@ -695,20 +700,263 @@ body.is-going-back {
 }
 
 
-/* Responsive: จอเล็กให้เรียงลง */
-@media (max-width: 900px) {
-  .case-media-grid {
-    grid-template-columns: 1fr;
+/* =========================================
+   DETAIL PAGE – MOBILE
+========================================= */
+@media (max-width: 768px) {
+
+  /* ===== BODY ===== */
+  body {
+    padding: 0;
   }
-  .page-layout {
+
+  /* ===== HERO ===== */
+  .project-hero {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    border-radius: 0;
+    box-sizing: border-box;
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "right"
+      "left"
+      "meta";
+    /* 🔒 lock padding */
+    padding-inline: 16px !important;       /* ซ้าย + ขวา */
+    padding-block-start: 16px;  /* บน */
+    padding-block-end: 0px;    /* ล่าง (ปรับได้) */
+    margin-bottom: 1rem;
+    overflow: clip; /* กัน child ดันขอบ */
+  }
+
+  .back-btn { 
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center; 
+    width: 32px; 
+    height: 32px; 
+    padding: 0; 
+    gap: 10px; 
+    background: none; 
+    border-radius: 50%; 
+    font-size: 14px;
+  }
+
+  .back-btn img {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+
+
+  /* ===== HERO LEFT ===== */
+  .hero-left {
+    padding: 0;
+  }
+
+ .hero-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    gap: 0;
+    padding-bottom: 1.5rem;
+  }
+
+  .hero-logo {
+    width: 60px;
+    height: 60px;
+    margin-left: -1rem;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-title {
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .hero-label {
+    font-size: 11px;
+    margin-bottom: 0px;
+    padding-top: 0%;
+    padding-bottom: 0%;
+    padding-left: 0%;
+    padding-right: 0%;
+  }
+
+  .hero-text {
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 100%;
+    margin-top: 0.5rem;
+    padding-top: 0%;
+    padding-bottom: 0%;
+    padding-left: 0%;
+    padding-right: 0%;
+  }
+
+  .hero-block {
+    margin-bottom: 20px;
+  }
+
+  /* ===== HERO RIGHT (IMAGE) ===== */
+  .hero-right {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    margin-top: 2rem;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-image {
+    width: 130%;
+    height: auto;
+    max-width: none;
+    object-fit: contain;
+    position: relative;
+    transform: none;
+  }
+
+
+  /* ===== META ===== */
+  .meta-item {
+    padding-top: 0%;
+    padding-bottom: 0%;
+    padding-left: 0%;
+    padding-right: 0%;
+  }
+
+  .hero-meta {
+    grid-template-columns: 1fr;
+    gap: 0px;
+    margin-top: -4%;
+  }
+
+  .meta-label {
+    font-size: 11px;
+    margin-top: 0.5rem;
+    margin-bottom: 0%;
+    padding-top: 0%;
+    padding-bottom: 0%;
+    padding-left: 0%;
+    padding-right: 0%;
+  }
+
+  .meta-value {
+    font-size: 14px;
+    margin-top: 0.5rem;
+  }
+
+  .tag-row {
+    margin-top: 0.5rem;
+    margin-bottom: 20px;
+    gap: 8px;
+  }
+
+  .tag {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .tool-row {
+    margin-top: 6px;
+  }
+
+  .tool-row img {
+    width: 28px;
+    padding: 4px;
+    animation: none; /* ปิด wiggle บน mobile */
+  }
+
+  /* ===== CASE BODY ===== */
+  .case-body {
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+
+  /* TOC – ปิดบน mobile */
+  .sidebar.toc {
+    display: none;
+  }
+
+  /* CONTENT */
+  .content-wrapper {
+    justify-content: flex-start;
   }
 
   .content {
     max-width: 100%;
+    padding: 0;
   }
 
+  .content-section {
+    margin-bottom: 48px;
+  }
+
+  /* ===== CASE HEADER ===== */
+  .case-eyebrow {
+    font-size: 11px;
+  }
+
+  .case-title {
+    font-size: 20px;
+    gap: 8px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .case-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .case-description {
+    width: 100%;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* ===== MEDIA ===== */
+  .case-media-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .case-media-grid-full {
+    gap: 16px;
+  }
+
+  .media-placeholder,
+  .media-fullplaceholder {
+    border-radius: 14px;
+  }
+
+  /* ===== FOOTER ===== */
+  .content-footer {
+    margin: 0;
+    padding: 0;
+    border-radius: 0px;
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-direction: column;   /* ⭐ สำคัญ */
+    align-items: center;
+    border-radius: 0px;
+    padding-top: 2rem;
+  }
+
+
   .footer-grid {
+    max-width: 100%;
     grid-template-columns: 1fr;
     gap: 32px;
   }
@@ -719,13 +967,26 @@ body.is-going-back {
 
   .footer-list li {
     font-size: 14px;
+    line-height: 1.6;
   }
 
   .footer-next {
-    position: static;
-    margin-top: 32px;
-    align-self: flex-end;
+    position: relative;        /* ❌ ไม่ใช้ static */
+    margin: 32px auto 0;       /* ⭐ center แนวนอน */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
     font-size: 14px;
+    padding: 12px 18px;
+    border-radius: 0px;
+
+    align-self: center;        /* ⭐ สำคัญ */
+  }
+
+  .arrow-css {
+    width: 10px;
+    height: 10px;
   }
 }
 

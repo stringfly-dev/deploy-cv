@@ -256,28 +256,7 @@ html, body {
   font-weight: 400 !important; 
   background: #F6B51E33;
 }
-/* RESPONSIVE BREAKPOINTS */
-@media (max-width: 1200px) {
-  .page {
-    flex-direction: column;
-    padding: min(3.5vw, 48px) min(1.8vw, 24px);
-  }
-  .left-col {
-    flex: none;
-    height: auto;
-    max-width: 100%;
-  }
-  .right-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 
-@media (max-width: 640px) {
-  .right-grid > .card {
-    grid-row: auto !important;
-    grid-column: auto !important;
-  }
-}
 
 .wave {
   display: inline-block;
@@ -353,4 +332,164 @@ body.is-transitioning {
   pointer-events: none;
 }
 
+
+/* RESPONSIVE BREAKPOINTS */
+@media (max-width: 1200px) {
+  .page {
+    flex-direction: column;
+    padding: min(3.5vw, 48px) min(1.8vw, 24px);
+  }
+  .left-col {
+    flex: none;
+    height: auto;
+    max-width: 100%;
+  }
+  .right-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ===============================
+   MOBILE (Index page)
+   =============================== */
+@media (max-width: 768px) {
+
+  /* ===== Page wrapper ===== */
+  .page {
+    flex-direction: column;
+    padding: 16px 16px 24px;
+    gap: 24px;
+    max-height: none;
+  }
+
+  /* ===== Left column ===== */
+  .left-col {
+    flex: none;
+    max-width: 100%;
+    min-width: 0;
+    height: auto;
+    gap: 16px;
+  }
+
+  /* ===== Title & intro ===== */
+  .title {
+    font-size: 24px;
+    line-height: 1.25;
+    margin-bottom: 8px;
+  }
+
+  .lead {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 0px;
+    color: var(--muted);
+  }
+
+  /* ===== Profile block (mobile card) ===== */
+
+ .profile {
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    bottom: env(safe-area-inset-bottom, 12px);
+    z-index: 100;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 18px;
+
+    /* ===== Figma spec ===== */
+    background: rgba(27, 25, 21, 0.9);     /* #1B1915 */
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+
+    box-shadow:
+      inset 0 10px 15px rgba(255,255,255,0.10), /* inner shadow */
+      0 -8px 24px rgba(0,0,0,.35);  
+                  /* outer shadow (เสริม UX) */
+    color: #D1D1D1;
+
+    padding: 12px 14px;
+    border-radius: 12px 12px 0 0;
+    justify-content: center;
+  }
+
+  .profile-meta {
+    gap: 8px;
+    line-height: 1.5;
+  }
+
+  .profile-buttons {
+    padding-top: 6px;
+  }
+
+  /* Profile image */
+ .profile-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    transform: rotate(4deg);
+  }
+
+  /* Buttons */
+  .btn {
+    font-size: 13px;
+    padding: 8px 12px;
+    border-radius: 10px;
+  }
+
+  /* ===== Grid ===== */
+  .right-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding-bottom: 120px;
+  }
+
+  /* Reset manual grid placement */
+  .right-grid > .card {
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+
+  /* ===== Card ===== */
+  .card {
+    border-radius: 18px;
+    aspect-ratio: 16 / 11;
+  }
+
+  /* Disable hover behavior on mobile */
+  .card:hover .card-info {
+    opacity: 0;
+    transform: none;
+  }
+
+  .card::after {
+    background: none !important;
+  }
+
+  /* ===== Card text ===== */
+  .card-title {
+    font-size: 18px;
+  }
+
+  .card-sub {
+    font-size: 14px;
+  }
+
+  /* ===== Chips ===== */
+  .chip-group {
+    bottom: 12px;
+    left: 12px;
+  }
+
+  .chip,
+  .chip.year,
+  .chip.custom {
+    font-size: 12px;
+    padding: 4px 10px;
+    font-weight: 400;
+  }
+
+}
 
