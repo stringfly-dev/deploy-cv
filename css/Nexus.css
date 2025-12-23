@@ -237,8 +237,8 @@ body {
 }
 
 .tag-icon {
-  width: 0.9vw;
-  height: 0.9vw;
+  width: 100%;
+  height: 100%;
   color: #C9C3FF;
   object-fit: contain;
   opacity: 0.9;
@@ -775,38 +775,493 @@ body.is-going-back {
   max-width: 100%;
 }
 
+.mobile-topbar,
+.mobile-menu {
+  display: none;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.menu-close {
+  display: none;
+}
+
+/* default */
+#closeMenu {
+  display: none;
+}
+
+/* เมื่อเปิดเมนู */
+body.menu-open #openMenu {
+  display: none;
+}
+
+body.menu-open #closeMenu {
+  display: inline-flex;
+}
 
 /* Responsive: จอเล็กให้เรียงลง */
-@media (max-width: 900px) {
-  .case-media-grid {
-    grid-template-columns: 1fr;
+@media (max-width: 768px) {
+
+      .mobile-topbar {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 12px 16px 12px 16px;
+    background: #000;
   }
-  .page-layout {
+
+  .topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .topbar-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  .topbar-name {
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  /* Hamburger */
+  .topbar-menu {
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .topbar-menu span {
+    width: 20px;
+    height: 2px;
+    background: #fff;
+    display: block;
+  }
+
+  /* ซ่อน back-btn เดิม */
+  .back-btn {
+    display: none;
+  }
+
+  .mobile-menu {
+    position: fixed;
+    display: block;
+    inset: 0;
+    background: #000;
+    z-index: 900;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 3rem;
+    max-height: 60vh;     /* ให้เลื่อนลงมา */
+    transform: translateY(-100%);
+    transition: transform 0.35s ease;
+  }
+
+  body.menu-open .mobile-menu {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .menu-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 850;                /* ต่ำกว่า mobile-menu */
+    
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.25s ease;
+    will-change: opacity;
+  }
+
+  body.menu-open .menu-backdrop {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+  }
+
+  .menu-close {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+  }
+
+  .menu-list {
+    padding: 1.5rem 2rem 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .menu-section {
+    font-size: 11px;
+    color: #777;
+    margin-top: 0px;
+  }
+
+  .menu-list a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 20px;
+    padding: 12px 0px 12px 0px;
+  }
+
+  .menu-list a.active {
+    background: #141414;
+    padding: 12px ;
+    border-radius: 12px;
+    margin-left: -0.7rem;
+  }
+
+  .menu-resume {
+    margin: auto 16px 24px;
+    padding: 14px;
+    background: #eee;
+    color: #000;
+    border-radius: 14px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  /* ===== BODY ===== */
+  body {
+    padding: 0;
+  }
+
+  /* ===== HERO ===== */
+  .project-hero {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border-radius: 0;
+    box-sizing: border-box;
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "right"
+      "left"
+      "meta";
+    /* 🔒 lock padding */
+    padding-inline: 16px !important;       /* ซ้าย + ขวา */
+    padding-block-start: 0px;  /* บน */
+    padding-block-end: 0px;    /* ล่าง (ปรับได้) */
+    margin-bottom: 1rem;
+    overflow: clip; /* กัน child ดันขอบ */
+  }
+
+  .header-pattern {
+    display: none;
+  }
+
+  .back-btn { 
+    display: none;
+  }
+
+  .back-btn img {
+    display: none;
+  }
+
+  /* ===== HERO LEFT ===== */
+  .hero-left {
+    padding: 0;
+  }
+
+ .hero-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    gap: 8px;
+    padding-bottom: 0rem;
+  }
+
+  .hero-logo {
+    width: 85px;
+    height: 40px;
+    margin-top: 1.5rem;
+    margin-left: 0rem;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-title {
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .hero-label {
+    font-size: 11px;
+    margin-bottom: 0px;
+    padding-top: 0.8rem;
+    padding-bottom: 0%;
+    padding-left: 0%;
+    padding-right: 0%;
+  }
+
+  .hero-text {
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 100%;
+    margin-top: 0.5rem;
+    margin-bottom: 0%;
+    padding-top: 0%;
+    padding-bottom: 0%;
+    padding-left: 0%;
+    padding-right: 0%;
+  }
+
+  .hero-block {
+    margin-bottom: 20px;
+  }
+
+  /* ===== HERO RIGHT (IMAGE) ===== */
+  .hero-right {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16 / 10;
+    margin-top: 1rem;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    top: 0;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: auto;
+    max-width: none;
+    object-fit: contain;
+    position: relative;
+    transform: none;
+  }
+
+
+  /* ===== META ===== */
+  .meta-item {
+    padding-top: 0%;
+    padding-bottom: 0%;
+    padding-left: 0%;
+    padding-right: 0%;
+  }
+
+  .hero-meta {
+    grid-template-columns: 1fr;
+    gap: 0px;
+    margin-top: -4%;
+  }
+
+  .meta-label {
+    font-size: 11px;
+    margin-top: 0.5rem;
+    margin-bottom: 0%;
+    padding-top: 0.8rem;
+    padding-bottom: 0%;
+    padding-left: 0%;
+    padding-right: 0%;
+  }
+
+  .meta-value {
+    font-size: 14px;
+    margin-top: 0.5rem;
+  }
+
+  .tag-row {
+    margin-top: 1rem;
+    margin-bottom: 20px;
+    gap: 8px;
+  }
+
+  .tag {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .tool-row {
+    margin-top: 6px;
+  }
+
+  .tool-row img {
+    width: 28px;
+    padding: 4px;
+    animation: none; /* ปิด wiggle บน mobile */
+  }
+
+  /* ===== CASE BODY ===== */
+  .case-body {
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+
+  /* TOC – ปิดบน mobile */
+  .sidebar.toc {
+    display: none;
+  }
+
+  /* CONTENT */
+  .content-wrapper {
+    justify-content: flex-start;
   }
 
   .content {
     max-width: 100%;
+    padding: 0;
+  }
+
+  .content-section {
+    margin-bottom: 48px;
+  }
+
+  /* ===== CASE HEADER ===== */
+  .case-eyebrow {
+    font-size: 11px;
+  }
+
+  .case-title {
+    font-size: 20px;
+    gap: 8px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .case-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .case-description {
+    width: 100%;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* ===== MEDIA ===== */
+  .case-media-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .case-media-grid-full {
+    gap: 16px;
+  }
+
+  .media-placeholder,
+  .media-fullplaceholder {
+    border-radius: 14px;
+  }
+
+  /* ===== FOOTER ===== */
+  .content-footer {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-radius: 0px;
+    height: auto;
+    min-height: auto;
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0px;  
+    height: auto;
+    padding-top: 4.5rem;   /* ↓ จาก 2rem */
+    padding-bottom: 8rem; /* เพิ่มนิดเดียวพอ */
   }
 
   .footer-grid {
+    max-width: 100%;
     grid-template-columns: 1fr;
     gap: 32px;
   }
 
   .footer-title {
     font-size: 12px;
+    margin: 0;
+    padding-left: 2rem;
+  }
+  
+  .footer-col {
+    max-width: 640px;     /* ปรับได้ 560–720 */
+    margin: 0 auto;
+  }
+
+  .footer-list {
+     padding-left: 1.25rem;   /* คุมระยะ bullet */
+     width: 80%;
+     margin: 0 auto;
   }
 
   .footer-list li {
     font-size: 14px;
+    line-height: 1.6;
+    
+  }
+
+  .footer-pattern {
+    position: absolute;
+    top: 1.5vw;
+    right: 2vw;
+
+    width: 15%;          /* ปรับตามขนาดที่อยากได้ */
+    height: auto;
+
+    pointer-events: none; /* กันไม่ให้บังการคลิก */
+
+    z-index: 1;          /* อยู่เหนือพื้นหลัง แต่ใต้ text */
   }
 
   .footer-next {
-    position: static;
-    margin-top: 32px;
-    align-self: flex-end;
+    position: absolute;
+    left: 50%;
+    bottom: 20px;              /* หรือ top ตาม design */
+    transform: translateX(-50%);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
     font-size: 14px;
   }
+
+
+  .arrow-css {
+    width: 6px;
+    height: 6px;
+  }
 }
+
 

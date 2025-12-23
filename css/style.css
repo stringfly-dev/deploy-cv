@@ -228,7 +228,7 @@ html, body {
 
 /* chip เดิม */
 .chip {
-  background: rgba(255, 255, 255, 0.20);
+  background: rgba(68, 68, 68, 0.5);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   padding: 0.3vw 0.6vw;
@@ -238,7 +238,7 @@ html, body {
   display: inline-flex;
   align-items: center;
   gap: 2px;                             /* Gap 2px */
-
+  /* opacity: 40%; */
   white-space: nowrap;
   font-weight: 400 !important; 
 }
