@@ -859,7 +859,7 @@ body.menu-open #closeMenu {
   display: flex;
   flex-direction: column;
 
-  height: 60dvh;                 /* ✅ สำคัญ */
+  height: 100dvh;                /* ✅ สำคัญ */
 
   transform: translateY(-100%);   /* ซ่อน */
   transition: transform 0.35s ease;
