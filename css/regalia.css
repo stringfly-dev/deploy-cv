@@ -843,19 +843,22 @@ body.menu-open #closeMenu {
   }
 
   .mobile-menu {
-    position: fixed;
-    display: block;
-    inset: 0;
-    background: #000;
-    z-index: 900;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    margin-top: 3rem;
-    max-height: 60%;     /* ให้เลื่อนลงมา */
-    transform: translateY(-200%);
-    transition: transform 0.35s ease;
-  }
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+
+  background: #000;
+  border-radius: 12px;
+  padding-top: 3rem;
+  display: flex;
+  flex-direction: column;
+
+  height: 60dvh;                 /* ✅ สำคัญ */
+
+  transform: translateY(-100%);   /* ซ่อน */
+  transition: transform 0.35s ease;
+}
+
 
   body.menu-open .mobile-menu {
     opacity: 1;
@@ -927,7 +930,10 @@ body.menu-open #closeMenu {
   }
 
   .menu-resume {
-    margin: auto 16px 24px;
+    margin-top: auto;   /* ดันไปล่างแบบคุมได้ */
+    margin-inline: 16px;
+    margin-bottom: calc(16px + env(safe-area-inset-bottom));
+
     padding: 14px;
     background: #eee;
     color: #000;
@@ -936,6 +942,7 @@ body.menu-open #closeMenu {
     text-decoration: none;
     font-weight: 500;
   }
+
 
   /* ===== BODY ===== */
   body {
