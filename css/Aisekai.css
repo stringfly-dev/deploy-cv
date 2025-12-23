@@ -873,6 +873,14 @@ body.menu-open #closeMenu {
 
 /* Responsive: จอเล็กให้เรียงลง */
 @media (max-width: 768px) {
+  
+  .topbar-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: inherit;
+  }
   .case-impact {
     max-width: 100%;
     gap: 12px;

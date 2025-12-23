@@ -789,7 +789,13 @@ body.menu-open #closeMenu {
 
 
 @media (max-width: 768px) {
-
+    .topbar-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: inherit;
+  }
     .mobile-topbar {
     position: sticky;
     top: 0;
