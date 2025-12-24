@@ -726,6 +726,13 @@ body.menu-open #closeMenu {
   display: inline-flex;
 }
 
+.behind-text {
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  margin: 0 0 0 0;
+  font-size: 16px;
+  font-weight: 700;
+}
 
 /* =========================================
    DETAIL PAGE – MOBILE
@@ -881,7 +888,7 @@ body.menu-open #closeMenu {
   .menu-resume {
     margin-top: auto;   /* ดันไปล่างแบบคุมได้ */
     margin-inline: 16px;
-    margin-bottom: calc(16px + env(safe-area-inset-bottom));
+    margin-bottom: calc(4rem + env(safe-area-inset-bottom));
 
     padding: 14px;
     background: #eee;
